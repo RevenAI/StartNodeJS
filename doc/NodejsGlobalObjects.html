@@ -1,0 +1,255 @@
+The output you've logged is the **global object** in Node.js. This object is available in all modules globally, similar to `window` in browsers. The global object provides access to built-in Node.js functions, timers, and utilities. Here’s a breakdown of what the output means:
+
+### Key Points of the Global Object:
+1. **global: [Circular *1]**
+   - This is a self-reference to the global object itself. The `[Circular *1]` means it points back to itself, creating a circular reference. This is how the `global` object can reference itself, which allows global functions and variables to be accessed anywhere.
+
+2. **clearImmediate, setImmediate**
+   - These are functions for managing **immediate timers** in Node.js:
+     - `setImmediate()`: Schedules a function to be executed at the end of the current event loop cycle.
+     - `clearImmediate()`: Cancels the execution of an immediate.
+
+   **Example**:
+   ```js
+   const immediateId = setImmediate(() => console.log("Immediate executed"));
+   clearImmediate(immediateId); // Cancels the immediate execution
+   ```
+
+3. **clearInterval, setInterval**
+   - These are used to manage **interval timers**:
+     - `setInterval()`: Schedules a function to run repeatedly at a set interval.
+     - `clearInterval()`: Cancels a scheduled interval.
+
+   **Example**:
+   ```js
+   const intervalId = setInterval(() => console.log("Interval executed"), 1000);
+   clearInterval(intervalId); // Cancels the interval
+   ```
+
+4. **clearTimeout, setTimeout**
+   - These functions are used for managing **timeout timers**:
+     - `setTimeout()`: Schedules a function to be executed after a specified delay.
+     - `clearTimeout()`: Cancels a scheduled timeout.
+
+   **Example**:
+   ```js
+   const timeoutId = setTimeout(() => console.log("Timeout executed"), 1000);
+   clearTimeout(timeoutId); // Cancels the timeout
+   ```
+
+5. **queueMicrotask**
+   - This function schedules a **microtask** to be executed after the current JavaScript execution block, but before any other task or timer:
+     - It's often used to handle small tasks that need to run immediately after the current code finishes.
+
+   **Example**:
+   ```js
+   queueMicrotask(() => console.log("Microtask executed"));
+   ```
+
+6. **structuredClone**
+   - This function **deeply clones** objects, including complex data structures like arrays, objects, and even typed arrays. It ensures that the cloned object is independent of the original.
+
+   **Example**:
+   ```js
+   const obj = { a: 1, b: { c: 2 } };
+   const clone = structuredClone(obj);
+   ```
+
+7. **atob, btoa**
+   - These are functions used to encode and decode **Base64 strings**:
+     - `atob()`: Decodes a Base64-encoded string into a binary string.
+     - `btoa()`: Encodes a binary string into a Base64 string.
+   
+   **Note**: These functions are often used in browser environments, but Node.js provides them too.
+
+8. **performance**
+   - This provides access to **performance timing information**. It's part of the `Performance` API in Node.js, allowing you to measure the time taken for certain operations.
+
+   **Example**:
+   ```js
+   console.log(performance.now()); // Outputs the current high-resolution time
+   ```
+
+9. **fetch**
+   - This is a global function for **fetching resources**. It allows you to make HTTP requests similar to how it's used in the browser.
+
+   **Example**:
+   ```js
+   fetch('https://jsonplaceholder.typicode.com/todos/1')
+     .then(response => response.json())
+     .then(data => console.log(data));
+   ```
+
+10. **crypto**
+    - The `crypto` module provides cryptographic functionality such as encryption, decryption, hashing, etc.
+
+    **Example**:
+    ```js
+    const { randomBytes } = require('crypto');
+    console.log(randomBytes(16).toString('hex')); // Generates a random 16-byte hex string
+    ```
+
+### Overall
+The `global` object is essential in Node.js because it provides access to many built-in features. You typically don’t need to use `global` directly because Node.js brings these functions into your environment automatically, but this object allows you to understand how and why those global functions exist.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Here’s a breakdown of each timing function or utility in Node.js and when to use them:
+
+### 1. **setImmediate()**
+   - **Definition**: This schedules a function to run at the end of the current **event loop** cycle, after the I/O events but before any timers set with `setTimeout()` or `setInterval()`.
+   - **Use Case**: Use `setImmediate()` when you want a task to execute **immediately after I/O events are processed**, or when you want to **defer** execution but don't need to wait for a timeout or interval.
+
+   **Example**:
+   ```js
+   console.log('Before immediate');
+   setImmediate(() => console.log('Inside immediate'));
+   console.log('After immediate');
+   ```
+
+   **Output**:
+   ```
+   Before immediate
+   After immediate
+   Inside immediate
+   ```
+
+   **Use When**:
+   - You need a task to execute right after the current I/O events, such as network or file operations, but before other timers like `setTimeout`.
+
+---
+
+### 2. **setTimeout()**
+   - **Definition**: This schedules a function to be executed **once** after a specified delay (in milliseconds).
+   - **Use Case**: Use `setTimeout()` when you need to **delay execution** of a task by a specific time. It is a common way to schedule functions in the future.
+
+   **Example**:
+   ```js
+   console.log('Before timeout');
+   setTimeout(() => console.log('Executed after 2 seconds'), 2000);
+   console.log('After timeout');
+   ```
+
+   **Output**:
+   ```
+   Before timeout
+   After timeout
+   Executed after 2 seconds
+   ```
+
+   **Use When**:
+   - You need to run a function **once** after a certain delay.
+   - Useful for delayed actions like debouncing, UI updates, and scheduled tasks.
+
+---
+
+### 3. **setInterval()**
+   - **Definition**: This schedules a function to be executed **repeatedly** with a fixed delay between each execution (in milliseconds).
+   - **Use Case**: Use `setInterval()` when you need to execute a task repeatedly, such as polling data from an API or creating a countdown timer.
+
+   **Example**:
+   ```js
+   console.log('Starting interval');
+   const intervalId = setInterval(() => console.log('Running every 1 second'), 1000);
+   
+   // To stop the interval after 5 seconds
+   setTimeout(() => clearInterval(intervalId), 5000);
+   ```
+
+   **Output**:
+   ```
+   Starting interval
+   Running every 1 second
+   Running every 1 second
+   Running every 1 second
+   Running every 1 second
+   Running every 1 second
+   ```
+
+   **Use When**:
+   - You need to run a function **continuously** at fixed intervals.
+   - Examples include real-time clocks, polling operations, and continuous background tasks.
+
+---
+
+### 4. **clearImmediate(), clearTimeout(), clearInterval()**
+   - **Definition**: These functions **cancel the scheduled operations** for `setImmediate()`, `setTimeout()`, or `setInterval()` respectively.
+   - **Use Case**: Use them when you need to **stop** an operation that has been scheduled but is no longer necessary.
+
+   **Example**:
+   ```js
+   const timeoutId = setTimeout(() => console.log('This will never run'), 5000);
+   clearTimeout(timeoutId); // Cancels the timeout
+   ```
+
+   **Use When**:
+   - You want to **cancel** or prevent a scheduled task from running, such as stopping a timer or aborting an operation based on user interaction.
+
+---
+
+### 5. **queueMicrotask()**
+   - **Definition**: This schedules a **microtask** to be executed immediately after the current block of code, before any other tasks or timers in the event loop.
+   - **Use Case**: Use `queueMicrotask()` when you want to perform a task as soon as possible, but **after the current synchronous code finishes**.
+
+   **Example**:
+   ```js
+   console.log('Before microtask');
+   queueMicrotask(() => console.log('Microtask executed'));
+   console.log('After microtask');
+   ```
+
+   **Output**:
+   ```
+   Before microtask
+   After microtask
+   Microtask executed
+   ```
+
+   **Use When**:
+   - You need a task to run **asynchronously** but immediately after the current operation. It’s useful when working with **promises** or **tasks that require high-priority execution**.
+
+---
+
+### 6. **structuredClone()**
+   - **Definition**: `structuredClone()` allows you to create a **deep copy** of an object or value, preserving its structure without referencing the original.
+   - **Use Case**: Use this when you need to copy complex data structures (arrays, objects, maps, sets) without maintaining references to the original object.
+
+   **Example**:
+   ```js
+   const obj = { name: 'John', nested: { age: 30 } };
+   const cloned = structuredClone(obj);
+   
+   cloned.nested.age = 31;
+   console.log(obj.nested.age); // Still 30, because it’s a deep clone
+   ```
+
+   **Use When**:
+   - You need a **deep copy** of objects that doesn't carry over any references, unlike shallow copies created by `Object.assign()` or spread syntax (`{...obj}`).
+
+---
+
+### 7. **fetch()**
+   - **Definition**: `fetch()` is a global function that makes HTTP requests and returns a promise that resolves to a `Response` object.
+   - **Use Case**: Use `fetch()` for **making HTTP requests** (GET, POST, PUT, DELETE) to interact with APIs or web services.
+
+   **Example**:
+   ```js
+   fetch('https://jsonplaceholder.typicode.com/posts')
+     .then(response => response.json())
+     .then(data => console.log(data));
+   ```
+
+   **Use When**:
+   - You need to **send or receive data** from a remote server or an API, commonly used for RESTful APIs, fetching resources, or interacting with databases over HTTP.
+
+---
+
+### Summary of When to Use Each:
+- **`setImmediate()`**: When you need a task to execute immediately after I/O events but before timers.
+- **`setTimeout()`**: When you need to delay the execution of a task by a specific time, for example, scheduling a one-time action.
+- **`setInterval()`**: When you need a task to repeat at regular intervals.
+- **`clearImmediate()`, `clearTimeout()`, `clearInterval()`**: When you need to cancel scheduled operations.
+- **`queueMicrotask()`**: When you need to schedule a task to run right after the current code execution finishes, but before any new event loop tasks.
+- **`structuredClone()`**: When you need a deep copy of an object or complex data structure.
+- **`fetch()`**: When you need to perform network requests, such as fetching data from an API.
+
+Each function serves a different purpose and is useful for various scenarios in asynchronous programming and task scheduling.

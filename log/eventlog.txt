@@ -1,0 +1,96 @@
+11102024	13:23:51	fffcc22e-904e-4ecd-991a-2924e8bd5166
+
+System Information:
+====================
+Platform       : win32
+Release        : 10.0.19045
+Total Memory   : 3.93 GB
+Free Memory    : 0.66 GB
+CPU Model      : Intel(R) Core(TM) i5-3340M CPU @ 2.70GHz
+CPU Cores      : 4
+Architecture   : x64
+Uptime         : 40.09 hours
+Hostname       : DESKTOP-G7T0UB4
+Home Directory : C:\Users\hinzu
+
+
+11102024	13:30:38	73e5aae1-0e5d-4de3-be0b-ac15b18d0038
+
+System Information:
+====================
+Platform       : win32
+Release        : 10.0.19045
+Total Memory   : 3.93 GB
+Free Memory    : 0.59 GB
+CPU Model      : Intel(R) Core(TM) i5-3340M CPU @ 2.70GHz
+CPU Cores      : 4
+Architecture   : x64
+Uptime         : 40.20 hours
+Hostname       : DESKTOP-G7T0UB4
+Home Directory : C:\Users\hinzu
+
+
+11102024	14:02:27	7153f8f1-1844-40df-992f-ed80adf1e0f2
+
+System Information:
+====================
+Platform       : win32
+Release        : 10.0.19045
+Total Memory   : 3.93 GB
+Free Memory    : 0.60 GB
+CPU Model      : Intel(R) Core(TM) i5-3340M CPU @ 2.70GHz
+CPU Cores      : 4
+Architecture   : x64
+Uptime         : 40.73 hours
+Hostname       : DESKTOP-G7T0UB4
+Home Directory : C:\Users\hinzu
+
+
+11102024	14:02:30	12330b97-a177-4db3-b872-40de865c276c
+
+System Information:
+====================
+Platform       : win32
+Release        : 10.0.19045
+Total Memory   : 3.93 GB
+Free Memory    : 0.61 GB
+CPU Model      : Intel(R) Core(TM) i5-3340M CPU @ 2.70GHz
+CPU Cores      : 4
+Architecture   : x64
+Uptime         : 40.73 hours
+Hostname       : DESKTOP-G7T0UB4
+Home Directory : C:\Users\hinzu
+
+
+11102024	15:23:59	a6e24d99-0811-475c-ac39-31d93af7a772
+
+System Information:
+====================
+Platform       : win32
+Release        : 10.0.19045
+Total Memory   : 3.93 GB
+Free Memory    : 0.65 GB
+CPU Model      : Intel(R) Core(TM) i5-3340M CPU @ 2.70GHz
+CPU Cores      : 4
+Architecture   : x64
+Uptime         : 42.09 hours
+Hostname       : DESKTOP-G7T0UB4
+Home Directory : C:\Users\hinzu
+
+
+11102024	15:24:04	a622a4a6-890e-4533-bfdc-0ea29d4627b4
+
+System Information:
+====================
+Platform       : win32
+Release        : 10.0.19045
+Total Memory   : 3.93 GB
+Free Memory    : 0.63 GB
+CPU Model      : Intel(R) Core(TM) i5-3340M CPU @ 2.70GHz
+CPU Cores      : 4
+Architecture   : x64
+Uptime         : 42.09 hours
+Hostname       : DESKTOP-G7T0UB4
+Home Directory : C:\Users\hinzu
+
+

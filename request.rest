@@ -1,0 +1,13 @@
+GET http://127.0.0.1:3001/employees
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik11YmFyYWsiLCJpYXQiOjE3Mjk0NjM5MDgsImV4cCI6MTcyOTQ2Mzk2OH0.BwNaNnwPIcVHXs1m3YC8p2XPs8z8etkvBbpiO_1a5JI
+###
+GET http://127.0.0.1:3001/refresh
+
+###
+POST http://127.0.0.1:3001/auth
+Content-Type: application/json
+
+{
+    "user": "Omolola",
+    "pwd": "user2021"
+}

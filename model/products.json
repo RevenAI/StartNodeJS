@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "SuperWidget",
+        "version": "1.0.0",
+        "company": "WidgetCorp",
+        "createdAt": "2024-01-15T08:30:00Z"
+    },
+    {
+        "id": 2,
+        "name": "MegaGadget",
+        "version": "2.5.1",
+        "company": "GadgetWorks",
+        "createdAt": "2024-02-20T10:15:00Z"
+    },
+    {
+        "id": 3,
+        "name": "TechTool",
+        "version": "3.3.2",
+        "company": "Tech Innovations",
+        "createdAt": "2024-03-12T14:45:00Z"
+    },
+    {
+        "id": 4,
+        "name": "SmartDevice",
+        "version": "4.1.4",
+        "company": "SmartTech",
+        "createdAt": "2024-04-05T11:00:00Z"
+    },
+    {
+        "id": 5,
+        "name": "IncredibleApp",
+        "version": "5.0.0",
+        "company": "AppSphere",
+        "createdAt": "2024-05-18T16:20:00Z"
+    }
+]

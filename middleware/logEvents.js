@@ -29,14 +29,14 @@ module.exports = logEvents; */
 
 
 
-// logEvents that works with the main server logging
+// logEvents.js file that works with the main server logging
 const fs = require('fs');
 const fsPromise = require('fs').promises;
 const path = require('path');
 
 const { format } = require('date-fns');
 const { v4: uuid } = require('uuid');
-const logDir = path.join(__dirname, '../../../NodeJS/Documentation/NpmLesson/log');
+const logDir = path.join(__dirname, '../../../../NodeJS/Documentation/NpmLesson/log');
 
 const logEvents = async (message, logName) => {
     const dateTime = format(new Date(), 'ddMMyyyy\tHH:mm:ss');
@@ -56,4 +56,12 @@ try {
 
 }
 
-module.exports = logEvents; 
+const logger = (req, res, next) => {
+    const origin = req.headers.origin || 'Unknown origin';
+    logEvents(`${req.method}\t${origin}\t${req.url}`, 'reqLog.txt');
+    console.log(`${req.method}\t${req.path}`);
+    next();
+ }
+
+//console.log(logEvents);
+module.exports = {logger, logEvents}; 
